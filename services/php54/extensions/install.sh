@@ -287,3 +287,23 @@ if [ -z "${EXTENSIONS##*,redis,*}" ]; then
     echo "---------- Install redis ----------"
     installExtensionFromTgz redis-4.1.1
 fi
+
+if [ -z "${EXTENSIONS##*,yaf,*}" ]; then
+    echo "---------- Install yaf-2.3.5 ----------"
+    installExtensionFromTgz yaf-2.3.5
+fi
+
+# xdebug扩展
+if [ -z "${EXTENSIONS##*,xdebug,*}" ]; then
+    echo "---------- Install xdebug-2.4.1 ----------"
+    installExtensionFromTgz xdebug-2.4.1
+fi
+
+# mongo扩展
+# @url:https://pecl.php.net/package/mongo
+if [ -z "${EXTENSIONS##*,mongo,*}" ]; then
+    echo "---------- Install mongo-1.6.16 ----------"
+    pecl channel-update pecl.php.net
+    apt-get install -y libssl-dev
+    installExtensionFromTgz mongo-1.6.16
+fi
