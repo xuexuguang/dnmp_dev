@@ -19,6 +19,9 @@ ADD ./extensions/install-php-extensions  /usr/local/bin/
 
 RUN chmod uga+x /usr/local/bin/install-php-extensions
 
+# env配置后无法安装rdkafka,在这里安装
+RUN install-php-extensions rdkafka
+
 RUN apk --no-cache add tzdata \
     && cp "/usr/share/zoneinfo/$TZ" /etc/localtime \
     && echo "$TZ" > /etc/timezone
